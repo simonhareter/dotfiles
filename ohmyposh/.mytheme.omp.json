@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "blue": "#8AADF4",
+    "lavender": "#B7BDF8",
+    "os": "#ACB0BE",
+    "pink": "#F5BDE6",
+    "text": "#494D64",
+    "wight": "#FFFFFF",
+    "green": "#8FD694",
+    "path": "#25c036",
+    "red": "#DA6C6C",
+    "beige": "#EAEBD0",
+    "accent": "#fbcb97"
+  },
+  "upgrade": {
+    "source": "cdn",
+    "interval": "168h",
+    "auto": false,
+    "notice": false
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": " λ ",
+          "foreground": "p:beige",
+          "type": "os",
+          "style": "diamond"
+        },
+        {
+          "template": "{{ .UserName }}@{{ .HostName }}",
+          "foreground": "p:accent",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "type": "path",
+          "template": " {{ .Path }}",
+          "foreground": "p:beige",
+          "style": "powerline",
+          "options": {
+            "home_icon": "~",
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "template": "<p:yellow> git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:beige>{{ .HEAD }}</>{{ end }}{{ if (gt .Ahead 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if (gt .Behind 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:beige>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
+          "foreground": "p:red",
+          "options": {
+            "branch_icon": "",
+            "commit_icon": "",
+            "tag_icon": "",
+            "fetch_status": true,
+            "fetch_push_status": true
+          }
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
